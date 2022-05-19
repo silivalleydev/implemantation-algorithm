@@ -25,6 +25,12 @@ prompt.start();
  * - 첫째 줄에 공간의 크기를 나타내는 N이 주어진다.
  * - 둘째 줄에 여행가 A가 이동할 계획서 내용이 주어진다.
  * - 첫째 중에 여행가 A가 최종적으로 도착할 지점의 좌표 (X,Y)를 공백으로 ㅊ구분하여 출력한다.
+ * 
+ * 첫번쨰 입력 5
+ * 두번째 입력 R R R U D D
+ * 
+ * 정답 4 3
+ * 
  */
 prompt.get(["space", "plan"], function(err, firstRes){
     const { space, plan } = firstRes;
@@ -36,26 +42,36 @@ prompt.get(["space", "plan"], function(err, firstRes){
     const planArr = spaceStrToArray(plan);
     const xy = [1, 1];
 
+    // 계획서 내용만큼 순회한다.
     planArr.forEach(plan => {
+        // x값을 먼저 뺀다
         let x = xy[0];
+        // y값을 먼저 뺀다
         let y = xy[1];
         switch (plan) {
             case 'L':
+                // 왼쪽이면 x 좌표 -1
                 x -= 1;
                 break;
             case 'R':
+                // 오른쪽이면 x 좌표 +1
                 x += 1;
                 break;
             case 'U':
+                // 윗쪽이면 y 좌표 -1
                 y -= 1;
                 break;
             case 'D':
+                // 아랫쪽이면 y 좌표 +1
                 y += 1;
                 break;
 
             }
+
+            // x와 y가 1보다 작거나 정사각형 공간 보다 크면 무시한다.
             if (x < 1 || y < 1 || x > spaceNumber || y > spaceNumber) return;
 
+            // 위의 조건에 해당하지 않으면 switch문에서 계산한 x와 y값을 넣어준다.
             xy[0] = x;
             xy[1] = y;
     });
