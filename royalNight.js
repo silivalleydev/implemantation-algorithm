@@ -72,7 +72,4 @@ prompt.get(["nightPosition"], function(err, firstRes){
     })
 
     console.log('answer??', answer)
-
-    
-
 });
