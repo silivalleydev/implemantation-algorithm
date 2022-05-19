@@ -10,6 +10,9 @@ prompt.get(["hour"], function(err, firstRes){
     let answer = 0;
     let answer2 = 0;
 
+    /**
+     * 풀이 1
+     */
     // 00시 00분 00초부터 N시 59분 59초까지를 계산하기위해
     // N * 60 * 60(입력된 시간을 초로 변환) + 59 * 60(59분을 초로 계산) + 59초를 더해줘 전체 초를 구한다.
     const wholeSec = Number(hour) * 60 * 60 + 59 * 60 + 59;
@@ -52,6 +55,9 @@ prompt.get(["hour"], function(err, firstRes){
         }
     }
 
+    /**
+     * 풀이2
+     */
     // 시간만큼 for문 돌린다
     for (let i = 0; i <= Number(hour); i++) {
         // 그안에 59분 만큼돌린다
